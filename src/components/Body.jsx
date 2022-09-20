@@ -62,11 +62,11 @@ const Body = () => {
 				</p>
 				<div className="flex items-center">
 					{(address === undefined) ? (
-						<p>Connect a wallet to mint...</p>
+						<p className="text-white text-md my-4">Connect a wallet to mint...</p>
 					) : (<>
 						{(isMismatched) ? (
 							<button
-								className="enabled:shadow-lg enabled:shadow-black text-white bg-[#e32970] hover:bg-[#bd255f] disabled:bg-[#808080] p-2 rounded-lg cursor-pointer my-4"
+								className="enabled:shadow-lg enabled:shadow-black text-white bg-[#e32970] hover:bg-[#bd255f] p-2 rounded-lg cursor-pointer my-4"
 								onClick={requestNetworkSwitch}
 							>
 								Switch Network
