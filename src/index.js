@@ -4,7 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 
-const activeChainId = ChainId.Mumbai;
+const activeChainId = ChainId.Mainnet;
 
 const container = document.getElementById("root");
 const root = createRoot(container);

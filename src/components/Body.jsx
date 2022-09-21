@@ -6,17 +6,17 @@ const Body = () => {
 	const [mintNumber, setMintNumber] = useState(1);
 	const [totalClaimed, setTotalClaimed] = useState(null);
 	const [hasMinted, setHasMinted] = useState(false);
-	const maxSupply = 501 // TODO: update this
+	const maxSupply = 6969;
 	const address = useAddress();
 	const [, switchNetwork] = useNetwork();
 	const isMismatched = useNetworkMismatch();
-	const {contract} = useContract("0x432Cf9354F51EA362A03203D71915d07cFe8ACE7");
+	const {contract} = useContract("0x53854652Ee7857a3055D0be1c9b96081Dd19B835");
 	const {mutate: claimNFT, isClaimLoading} = useClaimNFT(contract);
 	const {data: ineligibilityReasons} = useClaimIneligibilityReasons(contract, {walletAddress: address, quantity: 1});
 	const now = new Date();
 	const prelistStart = new Date('Wed Sep 21 2022 10:02 GMT-0400');
 	const slootlistStart = new Date('Wed Sep 21 2022 11:11 GMT-0400');
-	const slootlistEnd = new Date('Wed Sep 21 2022 12:20 GMT-0400')
+	const slootlistEnd = new Date('Wed Sep 21 2022 12:20 GMT-0400');
 
 	useEffect(() => {
 		const getTotalClaimedSupply = async () => {
@@ -29,7 +29,7 @@ const Body = () => {
 	}, [contract, hasMinted, isMismatched]);
 
 	const requestNetworkSwitch = () => {
-		switchNetwork(ChainId.Mumbai)
+		switchNetwork(ChainId.Mainnet)
 	}
 
 	const mint = async () => {
