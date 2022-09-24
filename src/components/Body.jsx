@@ -12,7 +12,7 @@ const Body = () => {
 	const isMismatched = useNetworkMismatch();
 	const {contract} = useContract("0x53854652Ee7857a3055D0be1c9b96081Dd19B835");
 	const {mutate: claimNFT, isClaimLoading} = useClaimNFT(contract);
-	const {data: ineligibilityReasons} = useClaimIneligibilityReasons(contract, {walletAddress: address, quantity: 1});
+	// const {data: ineligibilityReasons} = useClaimIneligibilityReasons(contract, {walletAddress: address, quantity: 1});
 	const now = new Date();
 	const prelistStart = new Date('Wed Sep 21 2022 10:02 GMT-0400');
 	const slootlistStart = new Date('Wed Sep 21 2022 11:11 GMT-0400');
@@ -39,7 +39,7 @@ const Body = () => {
 	}
 
 	const incrementMintNumber = () => {
-		let mintNumberMax = 5;
+		let mintNumberMax = 1000;
 		if (now > slootlistStart && now < slootlistEnd) {
 			mintNumberMax = 10;
 		}
@@ -67,13 +67,11 @@ const Body = () => {
 							Minting at 11:11am ET on hump day, 9/21
 						</p>
 					) : (<>
-						{(!!ineligibilityReasons && ineligibilityReasons.length > 0) ? (
-							<p className="text-white text-lg text-center py-6">
-								Connected wallet is ineligible to mint during this phase
-							</p>
-						) : (
-
-
+						{/*{(!!ineligibilityReasons && ineligibilityReasons.length > 0) ? (*/}
+						{/*	<p className="text-white text-lg text-center py-6">*/}
+						{/*		Connected wallet is ineligible to mint during this phase*/}
+						{/*	</p>*/}
+						{/*) : (*/}
 						<div className="flex items-center">
 							{(address === undefined) ? (
 								<p className="text-white text-lg font-bold text-center py-6">
@@ -106,17 +104,17 @@ const Body = () => {
 										<button
 											className="button-border text-white bg-[#f213a4] hover:bg-[#df0c95] disabled:bg-[#808080] p-2 rounded-lg cursor-pointer my-4 ml-4"
 											onClick={mint}
-											disabled={isClaimLoading || hasMinted || (!!ineligibilityReasons && ineligibilityReasons.length > 0)}
+											disabled={isClaimLoading || hasMinted}
 										>
 											Mint {mintNumber} lil' sloot{mintNumber === 1 ? ('') : ('s')}
 										</button>
 									</>)}
 							</>)}
 						</div>
-						)}
-						<p className="text-white text-sm text-center">
-							Limit {(now > slootlistStart && now < slootlistEnd) ? ('10') : ('5')} per wallet
-						</p>
+						{/*)}*/}
+						{/*<p className="text-white text-sm text-center">*/}
+						{/*	Limit {(now > slootlistStart && now < slootlistEnd) ? ('10') : ('5')} per wallet*/}
+						{/*</p>*/}
 						{totalClaimed === null ? (
 							<span className="text-xs text-white">
 			                    ? /{maxSupply}
