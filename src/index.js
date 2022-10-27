@@ -6,11 +6,15 @@ import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 
 const activeChainId = ChainId.Mainnet;
 
+const chainRpcConfig = process.env.INFURA_API_KEY && process.env.INFURA_API_KEY.length > 0
+    ? {[ChainId.Mainnet]: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`}
+    : {};
+
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <ThirdwebProvider desiredChainId={activeChainId}>
+    <ThirdwebProvider desiredChainId={activeChainId} chainRpc={chainRpcConfig}>
       <App />
     </ThirdwebProvider>
   </React.StrictMode>
